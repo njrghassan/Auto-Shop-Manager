@@ -19,11 +19,13 @@ function replaceThePart(){
   let j = 1;
   let totalValue = [];
   while (j <= i) {
+    const carInfo = document.getElementById("carInfo");
     const partInfo = document.getElementById("partinfo" + j);
     const product = document.getElementById("product" + j);
     const quantity = document.getElementById("quantity" + j);
     const price = document.getElementById("price" + j);
     const total = document.getElementById("total" + j);
+    carInfo.innerHTML = "<td>Car model: " + carInfo.value + "</td>";
     if (partInfo && product && quantity && price && total) {
       const calculatedTotal = price.value * quantity.value;
       total.value = "$" + calculatedTotal.toFixed(2);
