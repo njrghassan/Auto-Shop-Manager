@@ -1,0 +1,37 @@
+/*Page split*/
+.splitter{
+    background-color: rgba(0, 0, 0, 0.431);
+}
+/* Print Here */
+.coInfo img{
+    width: 50%;
+    position: relative;
+    top: -45px;
+}
+/*Customer Information*/
+#customerInfo p{
+    margin: 0;
+}
+
+/*Table style*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+thead {
+    background-color: rgb(53, 53, 53);
+}
+td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+th {
+    background-color: #eee;
+    font-weight: bold;
+}
+.total {
+    font-weight: bold;
+}
