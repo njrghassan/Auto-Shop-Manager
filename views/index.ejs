@@ -1,0 +1,92 @@
+<%- include("header") -%>
+<div id="printHere">
+    <div id="pPageContent">
+        <div id="bill">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-8">
+                        <div class="coInfo text-start">
+                            <img src="photos/Bravimotors no bg.png" alt="logo">
+                            <!-- <h1>BraviMotor</h1> -->
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <p class="m-0"><strong>BraviMotor.</strong> 212 Foritana Rd Se, Calgary</p>
+                        <p class="m-0"><strong>Phone:</strong> +1 403 797-1870</p> 
+                        <p class="m-0"><strong>Email:</strong> info@bavariamotors.ca</p>
+                        <p class="m-0"><strong>Website:</strong> bavariamotors.ca</p>
+                    </div>
+                </div>
+                <section class="row mt-5">
+                    <div class="col-8">
+                        <div class="col-1"><p class="fw-medium">Bill to:</p></div>
+                        <div id="customerInfo" class="col-11">
+                            <form action="/" method="post" name="postCustomerInfo" id="customerInput">
+                                <input type="text" id="customerName" placeholder="Name" name="customerName">
+                                <br>
+                                <input type="text" id="customerAddress" placeholder="Address" name="customerAddress">
+                                <br>
+                                <input type="number" id="customerPhone" placeholder="Phone" name="customerPhone">
+                                <br>
+                                <input type="email" id="customerEmail" placeholder="Email" name="customerEmail">
+                                <br>
+                                <input id="infoButton" type="submit">
+                            </form>
+                            <% for (let i = 0; i < customerInfotmationList.length; i++){ %>
+                                <div>
+                                    <p><%=  customerInfotmationList[i]  %></p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-4 mt-4">
+                        <p id="invoiceNumber" class="m-0"><strong>Invoice:</strong> 2023-001</p>
+                        <p id="invoiceDate" class="m-0"><strong>Invoice Date:</strong> <%=todayDate%></p>
+                    </div>
+                </section>
+                <section id="description" class="mt-5">
+                    <input id="car" type="text" placeholder="Car model">
+                    <table id="productsTable">
+                        <thead>
+                            <tr>
+                                <th class="container">Description</th>
+                                <th >Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="partinfo1">
+                                <td><input id="product1" type="text" placeholder="Product 1" style="width:100%"></td>
+                                <td><input id="quantity1" type="number" placeholder="2"></td>
+                                <td><input id="price1" type="text" placeholder="$50.00"></td>
+                                <td><input id="total1" type="text" placeholder="$100.00" disabled></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <span class="col-8"></span>
+                                <div class="col-4">
+                                    <h5 class="fw-bold ms-5 text-center">Total cost</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <span class="col-8"></span>
+                                <div class="col-4">
+                                    <h5 class="fw-bold ms-5 text-center"><%=totalCost%></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="enterButton" onclick="replaceThePart()">Enter</button>
+                    <button id="addButton" onclick="addProduct()">Add Product</button>
+                </section>
+            </div>
+        </div>
+    
+<%- include("footer") -%>
