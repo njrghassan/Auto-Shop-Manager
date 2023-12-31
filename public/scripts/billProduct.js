@@ -14,7 +14,6 @@ function addProduct(){
   totalCell.innerHTML = '<input id="total' + i + '" type="text" placeholder="$25.00" disabled>';
 }
 
-let totalSum;
 function replaceThePart(){
   let j = 1;
   let totalValue = [];
@@ -34,7 +33,7 @@ function replaceThePart(){
       partInfoTemp[1].innerHTML = quantity.value;
       partInfoTemp[2].innerHTML = "$" + price.value;
       partInfoTemp[3].innerHTML = "$" + calculatedTotal.toFixed(2);
-      totalValue.push(price.value);
+      totalValue.push(calculatedTotal);
     }
     console.log(totalValue);
 
@@ -45,11 +44,19 @@ function replaceThePart(){
     }
     j++;  
   }
-  totalSum = totalValue.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  //Total value part of the function
+  let totalSum = 0;
+  let k;
+  for (k = 0; k < totalValue.length; k++) {
+      if (totalValue[k] == "") {
+          totalValue[k] = 0;
+      } else {
+          totalSum += parseFloat(totalValue[k]);
+      }
+  }
   console.log(totalSum);
   return totalSum;
 }
-module.exports = {totalSum};
 
 function pPage(){
   const originalContents = document.body.innerHTML;

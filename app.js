@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
-const totalCost = require(__dirname + "/public/scripts/billProduct.js");
 
 app.use(express.static("public"), bodyParser.urlencoded({ extended: true }));
 
@@ -45,16 +44,6 @@ app.post("/", (req, res) => {
     customerPhone = req.body.customerPhone;
     customerEmail = req.body.customerEmail;
     console.log(customerName);
-
-    i = 1;
-    productName = req.body.product + i;
-    productQuantity = req.body.quantity + i;
-    productPrice = req.body.price + i;
-    productTotalHTML = req.body.total + i;
-    
-    productTotal = productQuantity * productPrice;
-    totalPrice.push(productTotal);
-
 
     if (customerName != undefined || customerAddress != undefined){
         customerInfotmationList.push(customerName, customerAddress, customerPhone, customerEmail);
