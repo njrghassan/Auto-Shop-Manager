@@ -13,17 +13,11 @@ const curDate = require(__dirname + "/date.js");
 const todayDate = curDate.getDate();
 const currYear = curDate.getYear();
 
-//Total cost
-const totalCost = require(__dirname + "/public/scripts/billProduct.js");
-
 app.set('view engine', 'ejs');
 
 let customerInfotmationList = [];
 let customerName, customerAddress, customerPhone, customerEmail;
-let totalSum = 0;
-
-let totalPrice = [];
-let productName, productQuantity, productPrice, productTotalHTML, productTotal;
+const totalCost = 0;
 
 app.get("/", (req, res) => {
     res.render('index', {customerInfotmationList: customerInfotmationList, totalCost: totalCost , todayDate: todayDate, currYear: currYear});
@@ -32,10 +26,6 @@ app.get("/", (req, res) => {
     forwardedIpsStr = req.header('x-forwarded-for');
     console.log(forwardedIpsStr + " enterd the site");
     customerInfotmationList = [];
-
-    //totalSum
-    totalSum = productTotal;
-    console.log(totalCost)
 });
 
 app.post("/", (req, res) => {

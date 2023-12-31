@@ -18,13 +18,11 @@ function replaceThePart(){
   let j = 1;
   let totalValue = [];
   while (j <= i) {
-    const carInfo = document.getElementById("carInfo");
     const partInfo = document.getElementById("partinfo" + j);
     const product = document.getElementById("product" + j);
     const quantity = document.getElementById("quantity" + j);
     const price = document.getElementById("price" + j);
     const total = document.getElementById("total" + j);
-    carInfo.innerHTML = "<td>Car model: " + carInfo.value + "</td>";
     if (partInfo && product && quantity && price && total) {
       const calculatedTotal = price.value * quantity.value;
       total.value = "$" + calculatedTotal.toFixed(2);
@@ -44,6 +42,14 @@ function replaceThePart(){
     }
     j++;  
   }
+
+  //Customer info part of the function
+  const carInfo = document.getElementById("car");
+  if (carInfo){
+    document.getElementById("carInfo").innerHTML = "<td>Car model: " + carInfo.value + "</td>";
+  }
+  
+
   //Total value part of the function
   let totalSum = 0;
   let k;
@@ -54,14 +60,25 @@ function replaceThePart(){
           totalSum += parseFloat(totalValue[k]);
       }
   }
+  // Tax rate
+  totalSum = totalSum * 1.05;
+  // Commas separating the thousands
+  totalSum = totalSum.toFixed(2);
+  let parts = totalSum.split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  totalSum = parts.join(".");
   console.log(totalSum);
-  return totalSum;
+  document.getElementById("totalCostHtml").innerHTML = "$" + totalSum;
 }
 
 function pPage(){
   const originalContents = document.body.innerHTML;
   const printContents = document.getElementById("printHere").innerHTML;
   document.body.innerHTML = printContents;
+
+  if (document.getElementById("pageWidth").classList.contains("container")) {
+    document.getElementById("pageWidth").classList.remove("container");
+  }
 
   // hide the infoButton
   if (document.getElementById("infoButton")) {

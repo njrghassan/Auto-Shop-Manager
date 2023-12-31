@@ -2,7 +2,7 @@
 <div id="printHere">
     <div id="pPageContent">
         <div id="bill">
-            <div class="container">
+            <div id="pageWidth" class="container">
                 <div class="row mt-5">
                     <div class="col-8">
                         <div class="coInfo text-start">
@@ -71,7 +71,7 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 class="fw-bold ms-5 text-center">Total cost</h5>
+                                    <h5 class="fw-medium ms-5 text-center">Total cost + tax</h5>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 class="fw-bold ms-5 text-center"><%=totalCost%></h5>
+                                    <h5 id="totalCostHtml" class="fw-bold ms-5 text-center"><%=totalCost%></h5>
                                 </div>
                             </div>
                         </div>
