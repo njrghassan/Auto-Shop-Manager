@@ -2,30 +2,31 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
+const { JSDOM } = require("jsdom");
+const { window } = new JSDOM("");
+const $ = require("jquery")(window);
 
-//date and time
+// date and time
 const curDate = require(__dirname + "/date.js");
 const todayDate = curDate.getDate();
 const currYear = curDate.getYear();
 
-//Total cost
-const totalCost = require(__dirname + "/public/scripts/billProduct.js");
-
 app.set('view engine', 'ejs');
 
-app.use(express.static("public"), bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"), bodyParser.urlencoded({ extended: true }));
 
 let customerInfotmationList = [];
 let customerName, customerAddress, customerPhone, customerEmail;
 
 app.get("/", (req, res) => {
-    res.render('index', {customerInfotmationList: customerInfotmationList, totalCost: totalCost , todayDate: todayDate, currYear: currYear});
+    //totalSum
+    const totalSum = req.app.locals.totalSum;
+    console.log(totalSum)
+
+    res.render('index', { customerInfotmationList: customerInfotmationList, totalSum: totalSum, todayDate: todayDate, currYear: currYear });
 
     forwardedIpsStr = req.header('x-forwarded-for');
-    console.log(forwardedIpsStr + " enterd the site");
+    console.log(forwardedIpsStr + " entered the site");
     customerInfotmationList = [];
 });
 
@@ -36,17 +37,15 @@ app.post("/", (req, res) => {
     customerEmail = req.body.customerEmail;
     console.log(customerName);
 
-    if (customerName != undefined || customerAddress != undefined){
+    if (customerName != undefined || customerAddress != undefined) {
         customerInfotmationList.push(customerName, customerAddress, customerPhone, customerEmail);
         res.redirect("/");
-    }
-    else{
+    } else {
         console.log(`Error: customer info not right`);
     }
-    
+
 });
 
-app.listen(port, function(req, res){
+app.listen(port, function (req, res) {
     console.log(`The server is up on ${port}!`)
 });
-

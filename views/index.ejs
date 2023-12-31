@@ -21,7 +21,7 @@
                         <div class="col-1"><p class="fw-medium">Bill to:</p></div>
                         <div id="customerInfo" class="col-11">
                             <form action="/" method="post" name="postCustomerInfo" id="customerInput">
-                                <input type="text" id="customerName" placeholder="Name" name="customerName">
+                                <input type="text" id="customerName" placeholder="Name" name="customerName" required>
                                 <br>
                                 <input type="text" id="customerAddress" placeholder="Address" name="customerAddress">
                                 <br>
@@ -55,7 +55,7 @@
                         </thead>
                         <tbody>
                             <tr id="carInfo">
-                                <td>Car model:<input id="car" type="text" placeholder="Car model" style="width:100%"></td>
+                                <td>Car model:<input id="car" type="text" placeholder="Car model" style="width:100%" required></td>
                             </tr>
                             <tr id="partinfo1">
                                 <td><input id="product1" type="text" placeholder="Product 1" style="width:100%"></td>
@@ -79,7 +79,7 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 class="fw-bold ms-5 text-center"><%=totalCost%></h5>
+                                    <h5 class="fw-bold ms-5 text-center"><%=totalSum%></h5>
                                 </div>
                             </div>
                         </div>
