@@ -58,10 +58,10 @@
                                 <td>Car model:<input id="car" type="text" placeholder="Car model" style="width:100%" required></td>
                             </tr>
                             <tr id="partinfo1">
-                                <td><input id="product1" type="text" placeholder="Product 1" style="width:100%"></td>
-                                <td><input id="quantity1" type="number" placeholder="2"></td>
-                                <td><input id="price1" type="text" placeholder="$50.00"></td>
-                                <td><input id="total1" type="text" placeholder="$100.00" disabled></td>
+                                <td><input name="product1"  id="product1" type="text" placeholder="Product 1" style="width:100%"></td>
+                                <td><input name="quantity1" id="quantity1" type="number" placeholder="2"></td>
+                                <td><input name="price1" id="price1" type="text" placeholder="$50.00"></td>
+                                <td><input name="total1" id="total1" type="text" placeholder="$100.00" disabled></td>
                             </tr>
                         </tbody>
                     </table>
@@ -79,7 +79,7 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 class="fw-bold ms-5 text-center"><%=totalSum%></h5>
+                                    <h5 class="fw-bold ms-5 text-center" name="newTotalSum"><%=totalSum%></h5>
                                 </div>
                             </div>
                         </div>

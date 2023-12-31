@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const { JSDOM } = require("jsdom");
 const { window } = new JSDOM("");
 const $ = require("jquery")(window);
+const totalCost = require(__dirname + "/public/scripts/billProduct.js");
+
+app.use(express.static("public"), bodyParser.urlencoded({ extended: true }));
 
 // date and time
 const curDate = require(__dirname + "/date.js");
@@ -13,21 +16,26 @@ const currYear = curDate.getYear();
 
 app.set('view engine', 'ejs');
 
-app.use(express.static("public"), bodyParser.urlencoded({ extended: true }));
-
 let customerInfotmationList = [];
 let customerName, customerAddress, customerPhone, customerEmail;
+let totalSum = 0;
+
+let totalPrice = [];
+let productName, productQuantity, productPrice, productTotalHTML, productTotal;
 
 app.get("/", (req, res) => {
-    //totalSum
-    const totalSum = req.app.locals.totalSum;
-    console.log(totalSum)
-
     res.render('index', { customerInfotmationList: customerInfotmationList, totalSum: totalSum, todayDate: todayDate, currYear: currYear });
 
+    //ip address
     forwardedIpsStr = req.header('x-forwarded-for');
     console.log(forwardedIpsStr + " entered the site");
+
+    //customerInformationList
     customerInfotmationList = [];
+
+    //totalSum
+    totalSum = productTotal;
+    console.log(totalCost)
 });
 
 app.post("/", (req, res) => {
@@ -36,6 +44,16 @@ app.post("/", (req, res) => {
     customerPhone = req.body.customerPhone;
     customerEmail = req.body.customerEmail;
     console.log(customerName);
+
+    i = 1;
+    productName = req.body.product + i;
+    productQuantity = req.body.quantity + i;
+    productPrice = req.body.price + i;
+    productTotalHTML = req.body.total + i;
+    
+    productTotal = productQuantity * productPrice;
+    totalPrice.push(productTotal);
+
 
     if (customerName != undefined || customerAddress != undefined) {
         customerInfotmationList.push(customerName, customerAddress, customerPhone, customerEmail);

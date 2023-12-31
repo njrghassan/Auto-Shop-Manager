@@ -56,6 +56,7 @@ function replaceThePart() {
       }
   }
   console.log(totalSum);
+  return totalSum;
 }
 
 function pPage(){
