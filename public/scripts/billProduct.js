@@ -46,7 +46,7 @@ function replaceThePart(){
   //Customer info part of the function
   const carInfo = document.getElementById("car");
   if (carInfo){
-    document.getElementById("carInfo").innerHTML = "<td>Car model: " + carInfo.value + "</td>";
+    document.getElementById("carInfo").innerHTML = "<td>" + carInfo.value + "</td>";
   }
   
 
@@ -60,15 +60,25 @@ function replaceThePart(){
           totalSum += parseFloat(totalValue[k]);
       }
   }
+
   // Tax rate
-  totalSum = totalSum * 1.05;
-  // Commas separating the thousands
-  totalSum = totalSum.toFixed(2);
-  let parts = totalSum.split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  totalSum = parts.join(".");
-  console.log(totalSum);
-  document.getElementById("totalCostHtml").innerHTML = "$" + totalSum;
+  totalTax = totalSum * 1.05;
+
+  document.getElementById("subTotal").innerHTML = "Sub total: $" + totalSum;
+  GST = totalSum * 0.05;
+  document.getElementById("GST").innerHTML = "GST: $" + GST.toFixed(2);
+    // Commas separating the thousands
+    totalTax = totalTax.toFixed(2);
+    let parts = totalTax.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    totalTax = parts.join(".");
+    console.log(totalTax);
+  document.getElementById("totalCostHtml").innerHTML = "Total: $" + totalTax;
+}
+
+function invoiceNum(){
+  invoiceNumber = document.getElementById("invoiceNumber").value;
+  document.getElementById("invoiceNumberHTML").innerHTML = "<strong>Invoice Number:</strong> " + invoiceNumber;  
 }
 
 function pPage(){

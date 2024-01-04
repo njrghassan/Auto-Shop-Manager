@@ -10,13 +10,11 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <p class="m-0"><strong>Location:</strong> 212 Foritana Rd Se, Calgary</p>
                         <p class="m-0"><strong>Phone:</strong> +1 403 797-1870</p> 
                         <p class="m-0"><strong>Email:</strong> info@bavariamotors.ca</p>
-                        <p class="m-0"><strong>Website:</strong> bavariamotors.ca</p>
                     </div>
                 </div>
-                <section class="row mt-5">
+                <section class="row">
                     <div class="col-8">
                         <div class="col-1"><p class="fw-medium">Bill to:</p></div>
                         <div id="customerInfo" class="col-11">
@@ -39,28 +37,28 @@
                         </div>
                     </div>
                     <div class="col-4 mt-4">
-                        <p id="invoiceNumber" class="m-0"><strong>Invoice:</strong> 2023-001</p>
+                        <p id="invoiceNumberHTML" class="m-0"><strong>Invoice:</strong><input id="invoiceNumber" type="text" placeholder="Invoice number" style="width:100%" required><input type="submit" onclick="invoiceNum()"></p>
                         <p id="invoiceDate" class="m-0"><strong>Invoice Date:</strong> <%=todayDate%></p>
                     </div>
                 </section>
                 <section id="description" class="mt-5">
+                    <div id="carInfo">
+                        <input id="car" type="text" placeholder="Car model" style="width:100%" required>
+                    </div>
                     <table id="productsTable">
                         <thead>
                             <tr>
                                 <th class="container">Description</th>
-                                <th >Quantity</th>
-                                <th>Price</th>
+                                <th >Price</th>
+                                <th>Quantity</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="carInfo">
-                                <td>Car model:<input id="car" type="text" placeholder="Car model" style="width:100%" required></td>
-                            </tr>
                             <tr id="partinfo1">
                                 <td><input name="product1"  id="product1" type="text" placeholder="Product 1" style="width:100%"></td>
-                                <td><input name="quantity1" id="quantity1" type="number" placeholder="2"></td>
                                 <td><input name="price1" id="price1" type="text" placeholder="$50.00"></td>
+                                <td><input name="quantity1" id="quantity1" type="number" placeholder="2"></td>
                                 <td><input name="total1" id="total1" type="text" placeholder="$100.00" disabled></td>
                             </tr>
                         </tbody>
@@ -71,7 +69,7 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 class="fw-medium ms-5 text-center">Total cost + tax</h5>
+                                    <p id="subTotal" class="fw-medium ms-5 text-center"><%=totalCost%></p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +77,15 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 id="totalCostHtml" class="fw-bold ms-5 text-center"><%=totalCost%></h5>
+                                    <p id="GST" class="fw-bold ms-5 text-center"><%=totalCost%></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <span class="col-8"></span>
+                                <div class="col-4">
+                                    <p id="totalCostHtml" class="fw-bold ms-5 text-center"><%=totalCost%></p>
                                 </div>
                             </div>
                         </div>
