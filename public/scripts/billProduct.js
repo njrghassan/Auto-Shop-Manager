@@ -5,12 +5,12 @@ function addProduct(){
   const row = table.insertRow(-1);
   row.setAttribute('id', 'partinfo' + i);
   const nameCell = row.insertCell(0);
-  const quantityCell = row.insertCell(1);
-  const priceCell = row.insertCell(2);
+  const priceCell = row.insertCell(1);
+  const quantityCell = row.insertCell(2);
   const totalCell = row.insertCell(3);
   nameCell.innerHTML = '<input id="product' + i + '" type="text" placeholder="Product ' + i + '" style="width:100%">';
-  quantityCell.innerHTML = '<input id="quantity' + i + '" type="number" placeholder="1">';
   priceCell.innerHTML = '<input id="price' + i + '" type="text" placeholder="$25.00">';
+  quantityCell.innerHTML = '<input id="quantity' + i + '" type="number" placeholder="1">';
   totalCell.innerHTML = '<input id="total' + i + '" type="text" placeholder="$25.00" disabled>';
 }
 
@@ -20,16 +20,16 @@ function replaceThePart(){
   while (j <= i) {
     const partInfo = document.getElementById("partinfo" + j);
     const product = document.getElementById("product" + j);
-    const quantity = document.getElementById("quantity" + j);
     const price = document.getElementById("price" + j);
+    const quantity = document.getElementById("quantity" + j);
     const total = document.getElementById("total" + j);
     if (partInfo && product && quantity && price && total) {
       const calculatedTotal = price.value * quantity.value;
       total.value = "$" + calculatedTotal.toFixed(2);
       const partInfoTemp = partInfo.getElementsByTagName('td');
       partInfoTemp[0].innerHTML = product.value;
-      partInfoTemp[2].innerHTML = '<p class="ms-4 m-0 p-0">'+ quantity.value + '</p>';
       partInfoTemp[1].innerHTML = '<p class="ms-2 m-0 p-0">'+ "$" + price.value + '</p>';
+      partInfoTemp[2].innerHTML = '<p class="ms-4 m-0 p-0">'+ quantity.value + '</p>';
       partInfoTemp[3].innerHTML = "$" + calculatedTotal.toFixed(2);
       totalValue.push(calculatedTotal);
     }
