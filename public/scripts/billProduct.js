@@ -28,8 +28,8 @@ function replaceThePart(){
       total.value = "$" + calculatedTotal.toFixed(2);
       const partInfoTemp = partInfo.getElementsByTagName('td');
       partInfoTemp[0].innerHTML = product.value;
-      partInfoTemp[1].innerHTML = quantity.value;
-      partInfoTemp[2].innerHTML = "$" + price.value;
+      partInfoTemp[2].innerHTML = '<p class="ms-4 m-0 p-0">'+ quantity.value + '</p>';
+      partInfoTemp[1].innerHTML = '<p class="ms-2 m-0 p-0">'+ "$" + price.value + '</p>';
       partInfoTemp[3].innerHTML = "$" + calculatedTotal.toFixed(2);
       totalValue.push(calculatedTotal);
     }
