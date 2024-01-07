@@ -5,19 +5,22 @@
             <div id="pageWidth" class="container">
                 <div class="row mt-5">
                     <div class="col-8">
-                        <div class="coInfo text-start">
+                        <div class="coInfo text-start p-0 m-0 mt-5">
                             <img src="photos/Bravimotors no bg.png" alt="logo">
                         </div>
                     </div>
                     <div class="col-4">
                         <p class="m-0"><strong>Phone:</strong> +1 403 797-1870</p> 
                         <p class="m-0"><strong>Email:</strong> info@bavariamotors.ca</p>
+                        <p id="invoiceNumberHTML" class="m-0 mt-3"><strong>Invoice:</strong><input id="invoiceNumber" type="text" placeholder="Invoice number" style="width:100%" required><input type="submit" onclick="invoiceNum()"></p>
+                        <p id="invoiceDate" class="m-0"><strong>Invoice Date:</strong> <%=todayDate%></p>
                     </div>
+                    
                 </div>
                 <section class="row">
                     <div class="col-8">
-                        <div class="col-1"><p class="fw-medium">Bill to:</p></div>
-                        <div id="customerInfo" class="col-11">
+                        <div><p class="fw-medium">Bill to:</p></div>
+                        <div id="customerInfo">
                             <form action="/" method="post" name="postCustomerInfo" id="customerInput">
                                 <input type="text" id="customerName" placeholder="Name" name="customerName">
                                 <br>
@@ -36,19 +39,16 @@
                             <% } %>
                         </div>
                     </div>
-                    <div class="col-4 mt-4">
-                        <p id="invoiceNumberHTML" class="m-0"><strong>Invoice:</strong><input id="invoiceNumber" type="text" placeholder="Invoice number" style="width:100%" required><input type="submit" onclick="invoiceNum()"></p>
-                        <p id="invoiceDate" class="m-0"><strong>Invoice Date:</strong> <%=todayDate%></p>
-                    </div>
                 </section>
-                <section id="description" class="mt-5">
+                <hr>
+                <section id="description" class="mt-2">
                     <div id="carInfo">
                         <input id="car" type="text" placeholder="Car model" style="width:100%" required>
                     </div>
                     <table id="productsTable">
                         <thead>
                             <tr>
-                                <th class="container m-0 p-0">Description</th>
+                                <th class="container ps-0">Description</th>
                                 <th >Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
