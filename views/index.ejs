@@ -7,6 +7,25 @@
                     <div class="col-8">
                         <div class="coInfo text-start p-0 m-0 mt-5">
                             <img src="photos/Bravimotors no bg.png" alt="logo">
+                            <div class="m-0 p-0"><p class="fw-medium m-0">Bill to:</p></div>
+                            <div id="customerInfo">
+                                <form action="/" method="post" name="postCustomerInfo" id="customerInput">
+                                    <input type="text" id="customerName" placeholder="Name" name="customerName">
+                                    <br>
+                                    <input type="text" id="customerAddress" placeholder="Address" name="customerAddress">
+                                    <br>
+                                    <input type="number" id="customerPhone" placeholder="Phone" name="customerPhone">
+                                    <br>
+                                    <input type="email" id="customerEmail" placeholder="Email" name="customerEmail">
+                                    <br>
+                                    <input id="infoButton" type="submit">
+                                </form>
+                                <% for (let i = 0; i < customerInfotmationList.length; i++){ %>
+                                    <div>
+                                        <p><%=  customerInfotmationList[i]  %></p>
+                                    </div>
+                                <% } %>
+                            </div>
                         </div>
                     </div>
                     <div class="col-4">
@@ -19,25 +38,7 @@
                 </div>
                 <section class="row">
                     <div class="col-8">
-                        <div><p class="fw-medium">Bill to:</p></div>
-                        <div id="customerInfo">
-                            <form action="/" method="post" name="postCustomerInfo" id="customerInput">
-                                <input type="text" id="customerName" placeholder="Name" name="customerName">
-                                <br>
-                                <input type="text" id="customerAddress" placeholder="Address" name="customerAddress">
-                                <br>
-                                <input type="number" id="customerPhone" placeholder="Phone" name="customerPhone">
-                                <br>
-                                <input type="email" id="customerEmail" placeholder="Email" name="customerEmail">
-                                <br>
-                                <input id="infoButton" type="submit">
-                            </form>
-                            <% for (let i = 0; i < customerInfotmationList.length; i++){ %>
-                                <div>
-                                    <p><%=  customerInfotmationList[i]  %></p>
-                                </div>
-                            <% } %>
-                        </div>
+                        
                     </div>
                 </section>
                 <hr>
