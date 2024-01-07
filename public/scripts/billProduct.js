@@ -45,9 +45,23 @@ function replaceThePart(){
 
   //Customer info part of the function
   const carInfo = document.getElementById("car");
-  if (carInfo){
+  const carMillage = document.getElementById("carKmInput");
+  if (carInfo && carMillage){
     document.getElementById("carInfo").innerHTML = "<td>" + carInfo.value + "</td>";
+
+    //adasdsa
+    carMillageValue = carMillage.value
+    let parts = carMillageValue.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    carMillageValue = parts.join(".");
+    document.getElementById("carMillage").innerHTML = "<p>" + carMillageValue + "</p>" 
+  }else{
+    console.error("We could not find the element for the information")
   }
+
+  // if (carMillage){
+  //   document.getElementById("carMillage").innerHTML = "<p>" + carMillage.value + "</p>" 
+  // }
   
 
   //Total value part of the function
