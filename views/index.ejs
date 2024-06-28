@@ -5,73 +5,75 @@
             <div id="pageWidth" class="container">
                 <div class="row mt-5">
                     <div class="col-8">
-                        <div class="coInfo text-start">
+                        <div class="coInfo text-start p-0 m-0 mt-5">
                             <img src="photos/Bravimotors no bg.png" alt="logo">
+                            <div class="m-0 p-0"><p class="fw-medium m-0">Bill to:</p></div>
+                            <div id="customerInfo">
+                                <form action="/" method="post" name="postCustomerInfo" id="customerInput">
+                                    <input type="text" id="customerName" placeholder="Name" name="customerName">
+                                    <br>
+                                    <input type="text" id="customerAddress" placeholder="Address" name="customerAddress">
+                                    <br>
+                                    <input type="number" id="customerPhone" placeholder="Phone" name="customerPhone">
+                                    <br>
+                                    <input type="email" id="customerEmail" placeholder="Email" name="customerEmail">
+                                    <br>
+                                    <input id="infoButton" type="submit">
+                                </form>
+                                <% for (let i = 0; i < customerInfotmationList.length; i++){ %>
+                                    <div>
+                                        <p><%=  customerInfotmationList[i]  %></p>
+                                    </div>
+                                <% } %>
+                            </div>
                         </div>
                     </div>
                     <div class="col-4">
-                        <p class="m-0"><strong>Location:</strong> 212 Foritana Rd Se, Calgary</p>
                         <p class="m-0"><strong>Phone:</strong> +1 403 797-1870</p> 
                         <p class="m-0"><strong>Email:</strong> info@bavariamotors.ca</p>
-                        <p class="m-0"><strong>Website:</strong> bavariamotors.ca</p>
-                    </div>
-                </div>
-                <section class="row mt-5">
-                    <div class="col-8">
-                        <div class="col-1"><p class="fw-medium">Bill to:</p></div>
-                        <div id="customerInfo" class="col-11">
-                            <form action="/" method="post" name="postCustomerInfo" id="customerInput">
-                                <input type="text" id="customerName" placeholder="Name" name="customerName">
-                                <br>
-                                <input type="text" id="customerAddress" placeholder="Address" name="customerAddress">
-                                <br>
-                                <input type="number" id="customerPhone" placeholder="Phone" name="customerPhone">
-                                <br>
-                                <input type="email" id="customerEmail" placeholder="Email" name="customerEmail">
-                                <br>
-                                <input id="infoButton" type="submit">
-                            </form>
-                            <% for (let i = 0; i < customerInfotmationList.length; i++){ %>
-                                <div>
-                                    <p><%=  customerInfotmationList[i]  %></p>
-                                </div>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="col-4 mt-4">
-                        <p id="invoiceNumber" class="m-0"><strong>Invoice:</strong> 2023-001</p>
+                        <p id="invoiceNumberHTML" class="m-0 mt-3"><strong>Invoice:</strong><input id="invoiceNumber" type="text" placeholder="Invoice number" style="width:100%" required><input type="submit" onclick="invoiceNum()"></p>
                         <p id="invoiceDate" class="m-0"><strong>Invoice Date:</strong> <%=todayDate%></p>
                     </div>
+                    
+                </div>
+                <section class="row">
+                    <div class="col-8">
+                        
+                    </div>
                 </section>
-                <section id="description" class="mt-5">
+                <hr>
+                <section id="description" class="mt-2">
+                    <div id="carInfo">
+                        <input id="car" type="text" placeholder="Car model" style="width:100%" required>
+                    </div>
                     <table id="productsTable">
                         <thead>
                             <tr>
-                                <th class="container">Description</th>
-                                <th >Quantity</th>
-                                <th>Price</th>
+                                <th class="container ps-0">Description</th>
+                                <th >Price</th>
+                                <th>Quantity</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr id="carInfo">
-                                <td>Car model:<input id="car" type="text" placeholder="Car model" style="width:100%" required></td>
-                            </tr>
+                        <tbody class="descriptionPart">
                             <tr id="partinfo1">
                                 <td><input name="product1"  id="product1" type="text" placeholder="Product 1" style="width:100%"></td>
-                                <td><input name="quantity1" id="quantity1" type="number" placeholder="2"></td>
                                 <td><input name="price1" id="price1" type="text" placeholder="$50.00"></td>
+                                <td><input name="quantity1" id="quantity1" type="number" placeholder="2"></td>
                                 <td><input name="total1" id="total1" type="text" placeholder="$100.00" disabled></td>
                             </tr>
                         </tbody>
                     </table>
+                    <div id="carMillage" class="m-0 p-0">
+                        <input id="carKmInput" type="text" placeholder="190,000km" style="width:100%" required>
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-12">
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 class="fw-medium ms-5 text-center">Total cost + tax</h5>
+                                    <p id="subTotal" class="fw-medium ms-5 text-center"><%=totalCost%></p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +81,15 @@
                             <div class="row">
                                 <span class="col-8"></span>
                                 <div class="col-4">
-                                    <h5 id="totalCostHtml" class="fw-bold ms-5 text-center"><%=totalCost%></h5>
+                                    <p id="GST" class="fw-bold ms-5 text-center"><%=totalCost%></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <span class="col-8"></span>
+                                <div class="col-4">
+                                    <p id="totalCostHtml" class="fw-bold ms-5 text-center"><%=totalCost%></p>
                                 </div>
                             </div>
                         </div>

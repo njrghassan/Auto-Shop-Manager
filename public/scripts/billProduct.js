@@ -5,12 +5,12 @@ function addProduct(){
   const row = table.insertRow(-1);
   row.setAttribute('id', 'partinfo' + i);
   const nameCell = row.insertCell(0);
-  const quantityCell = row.insertCell(1);
-  const priceCell = row.insertCell(2);
+  const priceCell = row.insertCell(1);
+  const quantityCell = row.insertCell(2);
   const totalCell = row.insertCell(3);
   nameCell.innerHTML = '<input id="product' + i + '" type="text" placeholder="Product ' + i + '" style="width:100%">';
-  quantityCell.innerHTML = '<input id="quantity' + i + '" type="number" placeholder="1">';
   priceCell.innerHTML = '<input id="price' + i + '" type="text" placeholder="$25.00">';
+  quantityCell.innerHTML = '<input id="quantity' + i + '" type="number" placeholder="1">';
   totalCell.innerHTML = '<input id="total' + i + '" type="text" placeholder="$25.00" disabled>';
 }
 
@@ -20,16 +20,16 @@ function replaceThePart(){
   while (j <= i) {
     const partInfo = document.getElementById("partinfo" + j);
     const product = document.getElementById("product" + j);
-    const quantity = document.getElementById("quantity" + j);
     const price = document.getElementById("price" + j);
+    const quantity = document.getElementById("quantity" + j);
     const total = document.getElementById("total" + j);
     if (partInfo && product && quantity && price && total) {
       const calculatedTotal = price.value * quantity.value;
       total.value = "$" + calculatedTotal.toFixed(2);
       const partInfoTemp = partInfo.getElementsByTagName('td');
       partInfoTemp[0].innerHTML = product.value;
-      partInfoTemp[1].innerHTML = quantity.value;
-      partInfoTemp[2].innerHTML = "$" + price.value;
+      partInfoTemp[1].innerHTML = '<p class="ms-2 m-0 p-0">'+ "$" + price.value + '</p>';
+      partInfoTemp[2].innerHTML = '<p class="ms-4 m-0 p-0">'+ quantity.value + '</p>';
       partInfoTemp[3].innerHTML = "$" + calculatedTotal.toFixed(2);
       totalValue.push(calculatedTotal);
     }
@@ -45,9 +45,23 @@ function replaceThePart(){
 
   //Customer info part of the function
   const carInfo = document.getElementById("car");
-  if (carInfo){
-    document.getElementById("carInfo").innerHTML = "<td>Car model: " + carInfo.value + "</td>";
+  const carMillage = document.getElementById("carKmInput");
+  if (carInfo && carMillage){
+    document.getElementById("carInfo").innerHTML = "<td>" + carInfo.value + "</td>";
+
+    //adasdsa
+    carMillageValue = carMillage.value
+    let parts = carMillageValue.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    carMillageValue = parts.join(".");
+    document.getElementById("carMillage").innerHTML = "<p>" + carMillageValue + "</p>" 
+  }else{
+    console.error("We could not find the element for the information")
   }
+
+  // if (carMillage){
+  //   document.getElementById("carMillage").innerHTML = "<p>" + carMillage.value + "</p>" 
+  // }
   
 
   //Total value part of the function
@@ -60,15 +74,25 @@ function replaceThePart(){
           totalSum += parseFloat(totalValue[k]);
       }
   }
+
   // Tax rate
-  totalSum = totalSum * 1.05;
-  // Commas separating the thousands
-  totalSum = totalSum.toFixed(2);
-  let parts = totalSum.split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  totalSum = parts.join(".");
-  console.log(totalSum);
-  document.getElementById("totalCostHtml").innerHTML = "$" + totalSum;
+  totalTax = totalSum * 1.05;
+
+  document.getElementById("subTotal").innerHTML = "Sub total: $" + totalSum;
+  GST = totalSum * 0.05;
+  document.getElementById("GST").innerHTML = "GST: $" + GST.toFixed(2);
+    // Commas separating the thousands
+    totalTax = totalTax.toFixed(2);
+    let parts = totalTax.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    totalTax = parts.join(".");
+    console.log(totalTax);
+  document.getElementById("totalCostHtml").innerHTML = "Total: $" + totalTax;
+}
+
+function invoiceNum(){
+  invoiceNumber = document.getElementById("invoiceNumber").value;
+  document.getElementById("invoiceNumberHTML").innerHTML = "<strong>Invoice Number:</strong> " + invoiceNumber;  
 }
 
 function pPage(){
