@@ -102,7 +102,7 @@ app.post("/", (req, res) => {
                 totalCost: "$NA",
                 date: todayDate
             });
-            
+            hello
             //savedb
             customerInfo.save();
         }
