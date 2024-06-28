@@ -89,7 +89,7 @@ app.post("/", (req, res) => {
         customerInfotmationList.push(customerName, customerAddress, customerPhone, customerEmail);
 
         //Generate a random number for the invoice
-        const invoiceNumber = Math.floor(Math.random() * 1000000);
+        const invoiceNumber = Math.floor(Math.random() * 100000);
 
         //save the customer info to the database
         try{
