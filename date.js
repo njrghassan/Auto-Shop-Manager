@@ -3,7 +3,7 @@ exports.getDate = function (){
     const options = {
         year: "numeric",
         day: "numeric",
-        month: "long"
+        month: "numeric"
     };
     return today.toLocaleDateString("en-CA", options);
 };

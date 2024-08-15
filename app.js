@@ -24,7 +24,7 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
 //schema
 const userSchema = new mongoose.Schema({
     id: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
@@ -90,6 +90,9 @@ app.post("/", (req, res) => {
 
         //Generate a random number for the invoice
         const invoiceNumber = Math.floor(Math.random() * 100000);
+        const invoiceDate = currYear[2] + currYear[3] + curDate.getDate()[5] + curDate.getDate()[6];
+        const invoiceID = invoiceDate + curDate + invoiceNumber;
+        console.log(invoiceID);
 
         //save the customer info to the database
         try{
@@ -102,7 +105,7 @@ app.post("/", (req, res) => {
                 totalCost: "$NA",
                 date: todayDate
             });
-            hello
+
             //savedb
             customerInfo.save();
         }
